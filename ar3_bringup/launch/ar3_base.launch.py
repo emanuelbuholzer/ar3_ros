@@ -102,7 +102,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "start_rviz",
-            default_value="true",
+            default_value="false",
             description="Start RViz2 automatically with this launch file.",
         )
     )
@@ -244,12 +244,28 @@ def generate_launch_description():
         )
     )
 
+    position_goals = PathJoinSubstitution(
+        [
+            FindPackageShare("ar3_bringup"),
+            "config",
+            "ar3_joint_trajectory_publisher.yaml",
+        ]
+    )
+    test_node = Node(
+        package="ar3_test_nodes",
+        executable="publisher_joint_trajectory_controller",
+        name="publisher_joint_trajectory_controller",
+        parameters=[position_goals],
+        output="both",
+    )
+
     nodes = [
         control_node,
         robot_state_pub_node,
         joint_state_broadcaster_spawner,
         delay_rviz_after_joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
+	test_node
     ]
 
     return LaunchDescription(declared_arguments + nodes)

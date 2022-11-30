@@ -12,6 +12,7 @@
   <depend>xacro</depend>
   <depend>rviz2</depend>
   <depend>ar3_description</depend>
+  <depend>ar3_test_nodes</depend>
   <depend>robot_state_publisher</depend>
   <depend>joint_state_broadcaster</depend>
   <depend>joint_trajectory_controller</depend>
