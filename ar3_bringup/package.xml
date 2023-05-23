@@ -13,6 +13,7 @@
   <depend>rviz2</depend>
   <depend>ar3_description</depend>
   <depend>joint_state_publisher_gui</depend>
+  <depend>controller_manager</depend>
   <depend>ar3_test_nodes</depend>
   <depend>robot_state_publisher</depend>
   <depend>joint_state_broadcaster</depend>
